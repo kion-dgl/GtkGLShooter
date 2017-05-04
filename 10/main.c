@@ -160,6 +160,8 @@ static void on_realize(GtkGLArea *area) {
 		GL_STATIC_DRAW
 	);
 
+	printf("Player VBO 0: %d\n", player.vbo[0]);
+
 	GLfloat bullet_vertices[] = {
 		-player.bullet_radius, -player.bullet_radius,
 		-player.bullet_radius, player.bullet_radius,
@@ -178,6 +180,8 @@ static void on_realize(GtkGLArea *area) {
 		bullet_vertices,
 		GL_STATIC_DRAW
 	);
+	
+	printf("Player VBO 1: %d\n", player.vbo[1]);
 
 	// Enemies
 
@@ -241,6 +245,8 @@ static void on_realize(GtkGLArea *area) {
 			enemy_vertices,
 			GL_STATIC_DRAW
 		);
+
+		printf("Enemy VBO[%d]: %d\n", i, enemies.vbo[i]);
 
 	}
 
