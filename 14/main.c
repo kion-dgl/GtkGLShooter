@@ -327,6 +327,7 @@ static void on_render(GtkGLArea *area, GdkGLContext *context) {
 	
 	glEnableVertexAttribArray(attribute_coord2d);
 
+	glBindBuffer(GL_ARRAY_BUFFER, player.bullet_vbo);
 	glVertexAttribPointer(
 		attribute_coord2d,
 		2,
@@ -336,7 +337,6 @@ static void on_render(GtkGLArea *area, GdkGLContext *context) {
 		0
 	);
 
-	glBindBuffer(GL_ARRAY_BUFFER, player.bullet_vbo);
 	for(i = 0; i < player.num_bullets; i++) {
 		if(!player.bullets[i].active) {
 			continue;
@@ -352,6 +352,7 @@ static void on_render(GtkGLArea *area, GdkGLContext *context) {
 
 	glEnableVertexAttribArray(attribute_coord2d);
 
+	glBindBuffer(GL_ARRAY_BUFFER, player.ship_vbo);
 	glVertexAttribPointer(
 		attribute_coord2d,
 		2,
@@ -361,7 +362,6 @@ static void on_render(GtkGLArea *area, GdkGLContext *context) {
 		0
 	);
 
-	glBindBuffer(GL_ARRAY_BUFFER, player.ship_vbo);
 	mat4_translate(player.pos, mvp);
 	glUniformMatrix4fv(uniform_mvp, 1, GL_FALSE, mvp);
 	glDrawArrays(GL_TRIANGLES, 0, 3);
